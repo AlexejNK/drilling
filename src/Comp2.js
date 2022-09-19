@@ -1,17 +1,23 @@
-import React from 'react';
-import { obj } from './func';
+import React, { useState } from 'react';
+
+let arr2;
 
 function Comp2() {
-    let col;
-    obj.color === 'Зеленый' ? col = 'green' : col = 'red';
-    const styles = {
-        background: col
-    }
-    return (
-        <div className='colorBlock' style={styles}>
-    Comp2
-    </div>
-  )
-}
+  const [color, setColor] = useState('green');
+  React.useEffect(() => {
+    const func2 = (currentColor) => { setColor(currentColor)};
+    arr2 = func2;
 
-export default Comp2
+},[])
+  const styles = {
+    background: color,
+  };
+
+  return (
+    <div className="colorBlock" style={styles}>
+      Comp2
+    </div>
+  );
+}
+export default Comp2;
+export { arr2 };

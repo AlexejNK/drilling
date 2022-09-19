@@ -1,14 +1,18 @@
-import React from 'react';
-import {obj} from './func'
+import React, { useState } from 'react';
+import { arr2 } from './Comp2';
 
 function Comp1() {
-    let colorBtn;
-    obj.color === 'Зеленый' ? (colorBtn = 'Красный') : (colorBtn = 'Зеленый');
-    return (
-      <div className='btn' onClick={()=>obj.func()}>
-          Изменить цвет на {colorBtn}
-      </div>
-  )
-}
+  const [text, setText] = useState('red');
 
-export default Comp1
+  return (
+    <div
+      className="btn"
+      onClick={() => {
+        arr2(text);
+        setText(text === 'red' ? 'green' : 'red');
+      }}>
+      Изменить цвет на {text}
+    </div>
+  );
+}
+export default Comp1;
